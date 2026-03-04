@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: departamentos-api
+  namespace: departamentos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: departamentos-api
+  template:
+    metadata:
+      labels:
+        app: departamentos-api
+    spec:
+      containers:
+        - name: departamentos-api
+          image: colombia-departamentos-api:1.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
+            - name: BASE_PATH
+              value: "/api/v1"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 20
