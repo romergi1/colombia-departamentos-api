@@ -1,0 +1,28 @@
+{
+  "name": "colombia-departamentos-api",
+  "version": "1.0.0",
+  "description": "Microservicio (API) en Node.js/Express que expone el listado de departamentos de Colombia con código DANE (DIVIPOLA).",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "colombia",
+    "dane",
+    "divipola",
+    "departamentos",
+    "api",
+    "microservicio",
+    "express"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

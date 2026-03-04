@@ -1,0 +1,10 @@
+services:
+  colombia-departamentos-api:
+    build: .
+    image: colombia-departamentos-api:1.0
+    container_name: departamentos-api
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      BASE_PATH: /api/v1
