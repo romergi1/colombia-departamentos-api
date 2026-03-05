@@ -1,6 +1,6 @@
 {
   "pais": "Colombia",
-  "fuente": "DANE - DIVIPOLA (código departamento, 2 dígitos)",
+  "fuente": "DANE - DIVIPOLA (código departamento)",
   "departamentos": [
     {
       "codigo_dane": "05",

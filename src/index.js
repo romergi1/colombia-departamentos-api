@@ -86,12 +86,7 @@ app.get(`${BASE_PATH}/departamentos/buscar`, (req, res) => {
   return res.status(200).json(encontrado);
 });
 
-/**
- * BÚSQUEDA POR CÓDIGO EN PATH
- * GET  /api/v1/departamentos/05
- *
- * Nota: esta ruta debe ir DESPUÉS de /buscar para no confundir "buscar" con ":codigo".
- */
+
 app.get(`${BASE_PATH}/departamentos/:codigo`, (req, res) => {
   const codigoNorm = String(req.params.codigo).trim().padStart(2, "0");
 
@@ -109,7 +104,7 @@ app.get(`${BASE_PATH}/departamentos/:codigo`, (req, res) => {
   return res.status(200).json(encontrado);
 });
 
-// 404
+// tratamiento error 404
 app.use((req, res) => {
   res.status(404).json({
     error: "No encontrado",
@@ -117,7 +112,7 @@ app.use((req, res) => {
   });
 });
 
-// Manejo de errores (fallback)
+// Manejo de errores 
 app.use((err, req, res, next) => {
   console.error("Error no controlado:", err);
   res.status(500).json({
