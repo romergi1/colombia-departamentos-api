@@ -18,7 +18,7 @@ const BASE_PATH = (process.env.BASE_PATH || "/api/v1").replace(/\/$/, "");
 app.use(cors());
 app.use(express.json());
 
-// Normaliza texto: minúsculas + sin tildes/diacríticos + trim
+
 function normalizarTexto(valor) {
   return String(valor || "")
     .trim()
@@ -27,7 +27,7 @@ function normalizarTexto(valor) {
     .replace(/\p{Diacritic}/gu, "");
 }
 
-// Endpoint simple de salud
+// Endpoint HEALT
 app.get("/health", (req, res) => {
   res.status(200).json({
     estado: "ok",
