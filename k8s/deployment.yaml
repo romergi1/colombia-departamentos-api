@@ -4,7 +4,7 @@ metadata:
   name: departamentos-api
   namespace: departamentos
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: departamentos-api
