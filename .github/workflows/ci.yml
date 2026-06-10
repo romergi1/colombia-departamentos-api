@@ -1,0 +1,42 @@
+name: CI - Node.js API
+
+on:
+  push:
+    branches:
+      - Master
+      - Dev
+      - Qa
+      - PRD
+  pull_request:
+    branches:
+      - Master
+      - Dev
+      - Qa
+      - PRD
+
+jobs:
+  build-test:
+    name: Build, Static Analysis and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v6
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+          cache: "npm"
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Análisis estático de código
+        run: npm run lint
+
+      - name: Ejecutar pruebas
+        run: npm test
+
+      - name: Validar construcción Docker
+        run: docker build -t colombia-departamentos-api:ci .
